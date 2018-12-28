@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute }    from '@angular/router';
+import { ActivatedRoute, Params }    from '@angular/router';
 import { Observable, Observer, Subscription } from 'rxjs';
 import { interval } from 'rxjs'
 
@@ -22,10 +22,16 @@ export class OfertaComponent implements OnInit, OnDestroy {
               private ofertasService: OfertaService) { }
 
   ngOnInit() { 
-    this.ofertasService.getOfertasPorId(this.route.snapshot.params['id'])
-    .then((oferta: Oferta) => {
-      this.oferta = oferta;
-    });    
+      
+     this.route.params.subscribe((paramentos: Params) =>{
+      
+        this.ofertasService.getOfertasPorId(paramentos.id)
+        .then((oferta: Oferta) => {
+          this.oferta = oferta;
+        });         
+     });
+
+    
       
   }
 

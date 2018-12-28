@@ -11,7 +11,8 @@ import { OfertaService } from './../ofertas.service';
 })
 export class RestaurantesComponent implements OnInit {
 
-  public ofertas: Oferta[];
+  public ofertas: Oferta[];  
+
   constructor(private ofertasService: OfertaService) { }
 
   ngOnInit() {
