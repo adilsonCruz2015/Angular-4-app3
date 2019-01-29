@@ -30,9 +30,6 @@ export class OfertaComponent implements OnInit, OnDestroy {
           this.oferta = oferta;
         });         
      });
-
-    
-      
   }
 
   ngOnDestroy(){
