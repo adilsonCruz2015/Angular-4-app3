@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
 
 import { Pedido } from "./shared/pedido.model";
 import { URL_API } from "./app.api";
@@ -21,7 +21,8 @@ export class OrdemcompraService {
          JSON.stringify(pedido),
          new RequestOptions({ headers: headers  })
        ).pipe(
-        map((resposta: Response) => resposta.json().id)
+        map((resposta: Response) => resposta.json().id),
+        catchError((error: Response) => 'Error')
        );
     }
 }

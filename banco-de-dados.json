@@ -206,6 +206,20 @@
       "complemento": "fffff",
       "formaPagamento": "dinheiro",
       "id": 3
+    },
+    {
+      "endereco": "R. CORONEL FREDERICO L. G. VARNHAGEM",
+      "numero": "120",
+      "complemento": "Perto do quintas",
+      "formaPagamento": "debito",
+      "id": 4
+    },
+    {
+      "endereco": "R. CORONEL FREDERICO L. G. VARNHAGEM",
+      "numero": "125",
+      "complemento": "Casa 2",
+      "formaPagamento": "dinheiro",
+      "id": 5
     }
   ]
 }
