@@ -30,21 +30,10 @@ export class topoComponent implements OnInit {
                      catchError((erro: any)    => { return of<Oferta[]>([]); })
                   );
               
-    }
-
-    /*public pesquisa(event: Event): void {
-      console.log((<HTMLInputElement>event.target).value);
-    }*/
+    }    
 
     public pesquisa(termoDaBusca: string): void {
-      /*this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca);
-      
-      this.ofertas.subscribe(
-        (ofertas:  Oferta[]) => console.log(ofertas),
-        (erro: any) => console.log('Erro Status', erro.status),
-        () => console.log('Fluxo de eventos completo!')
-      );*/
-         this.subjectPesquisa.next(termoDaBusca);
+      this.subjectPesquisa.next(termoDaBusca);
     }
 
     public limpaPesquisa(): void {
