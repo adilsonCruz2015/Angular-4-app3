@@ -7,7 +7,7 @@ import { Pedido } from "./shared/pedido.model";
 import { URL_API } from "./app.api";
 
 @Injectable()
-export class OrdemcompraService {
+export class OrdemCompraService {
 
     constructor(private http: Http) {}
 
