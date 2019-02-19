@@ -13,13 +13,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class OrdemCompraComponent implements OnInit {
 
   formulario: FormGroup;
-
-  /*public formulario: FormGroup = new FormGroup({
-    'endereco':       new FormControl(null, [ Validators.required, Validators.minLength(3), Validators.maxLength(120) ]),
-    'numero':         new FormControl(null, [ Validators.required, Validators.minLength(1), Validators.maxLength(20) ]),
-    'complemento':    new FormControl(null),
-    'formaPagamento': new FormControl(null, [ Validators.required ] )
-  });*/
+  public IdPedidoCompra: number;
+  
   constructor(private ordemCompraService: OrdemCompraService,
               private formBuilder: FormBuilder) { }
 
@@ -35,17 +30,25 @@ export class OrdemCompraComponent implements OnInit {
   }  
 
   public confirmarCompra(): void {
-    //console.log(this.formulario);
 
     const _endereco = this.formulario.value.endereco;
     const _numero   = this.formulario.value.numero;
     const _complemento = this.formulario.value.complemento;
     const _formaPagamento = this.formulario.value.formaPagamento;
 
-    console.log("O endereco é : " + _endereco + "\n");
-    console.log("O Número é : " + _numero + "\n");
-    console.log("O complemento é : " + _complemento);
-    console.log("A forma de pagamento é : " + _formaPagamento);
+    if(this.formulario.status === 'INVALID'){
+
+    }
+    else{
+      let pedido: Pedido = new Pedido(_endereco, _numero, _complemento, _formaPagamento);
+
+      this.ordemCompraService.efetivarCompra(pedido)
+      .subscribe((idPedido: number) => {
+         this.IdPedidoCompra = idPedido;
+      });
+
+    }
+    
   }
 
   onReset(): void {
