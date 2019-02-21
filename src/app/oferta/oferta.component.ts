@@ -5,13 +5,14 @@ import { interval } from 'rxjs'
 
 import { OfertaService } from './../ofertas.service';
 import { Oferta } from './../shared/oferta.model';
+import { CarrinhoService } from '../carrinho.service';
 
 
 @Component({
   selector: 'app-oferta',
   templateUrl: './oferta.component.html',
   styleUrls: ['./oferta.component.css'],
-  providers:[ OfertaService ]
+  providers:[ OfertaService, CarrinhoService ]
 })
 export class OfertaComponent implements OnInit, OnDestroy { 
   
@@ -19,7 +20,8 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   constructor(
               private route: ActivatedRoute,
-              private ofertasService: OfertaService) { }
+              private ofertasService: OfertaService,
+              private carrinhoService: CarrinhoService) { }
 
   ngOnInit() { 
       
@@ -34,6 +36,11 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
       
+  }
+
+  public adicionarItemCarrinho() : void {
+     this.carrinhoService.incluirItem(this.oferta);  
+     console.log(this.carrinhoService.exibirItens());  
   }
 
 }
